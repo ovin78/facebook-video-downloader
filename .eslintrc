@@ -1,0 +1,14 @@
+{
+	"rules": {
+		"semi": 2,
+		"no-extra-semi": 2
+	},
+	"ecmaFeatures": {
+		"arrowFunctions": false,
+		"modules": true,
+		"blockBindings": true,
+		"destructuring": true,
+		"templateStrings": true,
+		"arrowFunctions": true
+	}
+}
