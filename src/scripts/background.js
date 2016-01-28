@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // inject the content script into all fully loaded facebook tabs
 chrome.tabs.query({
@@ -7,7 +7,7 @@ chrome.tabs.query({
 	tabs.forEach(function(tab) {
 		// check if it's a facebook tab
 		if (!tab.url.match(/^https?\:\/\/[^./]*\.facebook\.com/i))
-			return
+			return;
 
 		// inject the content script
 		// then send the 'update' message to have it scan the page
@@ -17,7 +17,7 @@ chrome.tabs.query({
 		}, function() {
 			chrome.tabs.sendMessage(tab.id, { // tell to update
 				msg: 'update'
-			})
-		})
-	})
-})
+			});
+		});
+	});
+});
