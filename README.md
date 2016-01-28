@@ -42,7 +42,8 @@ Remember that paths referenced in e.g. manifest.json are relative to manifest.js
 
 ### JavaScript
 
-1. Omit semicolons after statements, unless required
+1. Use tabs for indentation, except for in package.json (since npm uses spaces)
+1. Use one semicolon after statements
 1. Declare only one variable per statement
 1. Prefer `let` to `var`, unless the latter is required
 1. Prefer 'apostrophes' to "quotation marks" in JavaScript
