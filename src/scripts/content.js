@@ -54,7 +54,7 @@ function insertButtons(node, sources) {
 // * if the embed element is a grandchild of a video element,
 //   insert the buttons  next to the video element instead
 function handleEmbed(node) {
-	node.dataset[DATA_ATTRIBUTE] = '1'; // mark the node as handled
+	node.dataset[DATA_ATTRIBUTE] = DATA_VALUE; // mark the node as handled
 	let flashvars = node.getAttribute('flashvars');
 	if (!flashvars)
 		return;
@@ -67,8 +67,8 @@ function handleEmbed(node) {
 
 // find all unhandled embed elements under `node`
 function handleDescendantsOf(node) {
-	let nodeList = node.querySelectorAll(`embed:not([data-${DATA_ATTRIBUTE}="1"])`);
-	let result = Array.from(nodeList, node => {
+	let nodeList = node.querySelectorAll(`embed:not([data-${DATA_ATTRIBUTE}="${DATA_VALUE}"])`);
+	Array.from(nodeList, node => {
 		return handleEmbed(node);
 	});
 }
