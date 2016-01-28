@@ -4,7 +4,6 @@
 		"no-extra-semi": 2
 	},
 	"ecmaFeatures": {
-		"arrowFunctions": false,
 		"modules": true,
 		"blockBindings": true,
 		"destructuring": true,
