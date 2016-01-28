@@ -1,0 +1,61 @@
+.fbvd--wrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  /* horizontal link padding times two */
+  opacity: 0;
+  text-align: center;
+  margin: 0;
+  z-index: 5;
+  a {
+    display: inline-block;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f7f8+100 */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f6f7f8));
+    background: -webkit-linear-gradient(top, #ffffff 0%, #f6f7f8 100%);
+    background: -o-linear-gradient(top, #ffffff 0%, #f6f7f8 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #f6f7f8 100%);
+    text-decoration: none;
+    padding: 2px 7px 3px;
+    margin-right: 8px;
+    /* imitating fb */
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    border: 1px solid;
+    border-color: #cccccc #c5c6c8 #b6b7b9;
+    border-radius: 2px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    vertical-align: middle;
+    color: #4e5665;
+    text-shadow: 0 1px 0 #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  b {
+    font-size: 13px;
+    position: relative;
+    top: 1px;
+    color: #7b7e83;
+    font-weight: normal;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+*:hover > * > .fbvd--wrapper {
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  opacity: 1;
+}
