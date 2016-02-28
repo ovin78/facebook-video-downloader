@@ -1,0 +1,9 @@
+{
+	"globals": {
+		"chrome": true,
+		"MutationObserver": true,
+		"document": true
+	},
+	"esversion": 6,
+	"strict": "global"
+}
