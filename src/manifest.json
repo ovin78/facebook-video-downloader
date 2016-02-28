@@ -6,11 +6,11 @@
 	"description": "Adds functionality for downloading Facebook videos in HD or SD resolution",
 	"author": "Deniz Dogan",
 	"icons": {
-		"16": "images/fbvd-16.png",
-		"32": "images/fbvd-32.png",
-		"48": "images/fbvd-48.png",
-		"64": "images/fbvd-64.png",
-		"128": "images/fbvd-128.png"
+		"16": "images/icons/fbvd-16.png",
+		"32": "images/icons/fbvd-32.png",
+		"48": "images/icons/fbvd-48.png",
+		"64": "images/icons/fbvd-64.png",
+		"128": "images/icons/fbvd-128.png"
 	},
 	"content_scripts": [{
 		"matches": ["*://*.facebook.com/*"],

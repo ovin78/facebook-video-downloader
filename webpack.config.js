@@ -33,9 +33,9 @@ module.exports = {
 	},
 	plugins: [
 		new CopyWebpackPlugin([{
-			from: './images/fbvd-*.png'
+			from: 'images/icons/fbvd-*.png'
 		}, {
-			from: './manifest.json'
+			from: 'manifest.json'
 		}]),
 		new CleanWebpackPlugin(['dist'], {
 			verbose: true
