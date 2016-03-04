@@ -34,7 +34,7 @@ function extractSources(flashvars) {
 		return m ? m[1].replace(SLASH_REGEXP, '/') : null;
 	}
 
-	// decode the URI encoded
+	// decode the URI encoded value
 	let value = decodeURIComponent(flashvars);
 	let hd = extractURL(value, HD_REGEXP);
 	let sd = extractURL(value, SD_REGEXP);
