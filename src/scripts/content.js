@@ -3,20 +3,29 @@
 import '../styles/content.scss';
 
 // data attribute and value to attach to elements that have been handled
-const DATA_ATTRIBUTE = 'fbvddwnldr';
-const DATA_VALUE = '1';
+const HANDLED_ATTRIBUTE = 'fbvddwnldr';
+const HANDLED_VALUE = '1';
 
 // regexps to extract HD/SD sources from flashvars
 const HD_REGEXP = new RegExp('"hd_src_no_ratelimit":"([^"]+)"');
 const SD_REGEXP = new RegExp('"sd_src_no_ratelimit":"([^"]+)"');
 
-// matches a literal "\/" anywhere in a string
+// matches a literal `\/` anywhere in a string
 const SLASH_REGEXP = new RegExp('\\\\/', 'g');
 
 // unicode floppy disk
 const FLOPPY = '\ud83d\udcbe';
 
-// extracts the HD and/or SD sources from a flashvars attribute value
+/**
+ * Extract video source URLs given a flashvars attribute value.
+ *
+ * The HD and SD video source URLs are inserted under the 'hd' and 'sd'
+ * properties in the returned object. Both can be null if the video source URL
+ * was not found.
+ *
+ * @param  {string} flashvars - A flashvars attribute value
+ * @return {object} An object with properties 'hd' and 'sd'
+ */
 function extractSources(flashvars) {
 
 	// match `input` and `regexp` and replace all "\/" with just "/".
@@ -36,7 +45,15 @@ function extractSources(flashvars) {
 	};
 }
 
-// inserts the download buttons given the target node and the HD/SD sources
+/**
+ * Insert download buttons adjacent to a node.
+ *
+ * If there is no HD or SD source URL, stop. Otherwise, create and insert one
+ * download button for each source URL adjacent to the node.
+ *
+ * @param {Node} node - A node representing a video
+ * @param {object} An object containing the extracted video source URLs
+ */
 function insertButtons(node, sources) {
 	if (!sources.hd && !sources.sd)
 		return;
@@ -49,12 +66,21 @@ function insertButtons(node, sources) {
 	node.insertAdjacentHTML('beforebegin', html);
 }
 
-// * find video source URLs for the given embed element
-// * insert download buttons next to the element
-// * if the embed element is a grandchild of a video element,
-//   insert the buttons  next to the video element instead
+/**
+ * Insert download buttons in the appopriate place for the given EMBED node.
+ *
+ * Marks the given node as handled.
+ *
+ * If the given node has a `flashvars` attribute, try to extract the video
+ * source URLs from its value. Otherwise, stop.
+ *
+ * If the node's grand-parent node is a VIDEO node, insert download buttons
+ * next to that, otherwise insert them next to the EMBED node.
+ *
+ * @param {Node} node - An EMBED node representing a video
+ */
 function handleEmbed(node) {
-	node.dataset[DATA_ATTRIBUTE] = DATA_VALUE; // mark the node as handled
+	node.dataset[HANDLED_ATTRIBUTE] = HANDLED_VALUE; // mark the node as handled
 	let flashvars = node.getAttribute('flashvars');
 	if (!flashvars)
 		return;
@@ -62,19 +88,22 @@ function handleEmbed(node) {
 	let grandParent = node.parentNode.parentNode;
 	let target = grandParent.nodeName == 'VIDEO' ? grandParent : node;
 	insertButtons(target, sources);
-	return node;
 }
 
-// find all unhandled embed elements under `node`
+/**
+ * Find and handle unhandled EMBED node under a given node.
+ *
+ * @param {Node} node - The root node to search from
+ */
 function handleDescendantsOf(node) {
-	let nodeList = node.querySelectorAll(`embed:not([data-${DATA_ATTRIBUTE}="${DATA_VALUE}"])`);
+	let nodeList = node.querySelectorAll(`embed:not([data-${HANDLED_ATTRIBUTE}="${HANDLED_VALUE}"])`);
 	Array.from(nodeList, node => {
-		return handleEmbed(node);
+		handleEmbed(node);
 	});
 }
 
 // create an observer instance
-// find any embed elements below nodes that change
+// find any embed nodes below any node whose subtree changes
 let observer = new MutationObserver(mutations => {
 	mutations.forEach(rec =>
 		handleDescendantsOf(rec.target)
