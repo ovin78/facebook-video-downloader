@@ -1,8 +1,22 @@
+@keyframes fadeInOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+*:hover > * > .fbvd--wrapper {
+  animation-name: fadeInOpacity;
+  animation-duration: 0.3s;
+  opacity: 1;
+}
+
 .fbvd--wrapper {
   position: absolute;
   top: 10px;
   right: 10px;
-  /* horizontal link padding times two */
   opacity: 0;
   text-align: center;
   margin: 0;
@@ -17,7 +31,6 @@
     text-decoration: none;
     padding: 2px 7px 3px;
     margin-right: 8px;
-    /* imitating fb */
     font-family: Helvetica, Arial, sans-serif;
     font-size: 12px;
     border: 1px solid;
@@ -35,6 +48,10 @@
     &:hover {
       text-decoration: none;
     }
+    &:focus {
+      box-shadow: 0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15);
+      outline: none;
+    }
   }
   b { // the floppy disk icon
     font-size: 13px;
@@ -43,19 +60,4 @@
     color: #3b5998;
     font-weight: normal;
   }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-*:hover > * > .fbvd--wrapper {
-  animation-name: fadeIn;
-  animation-duration: 0.3s;
-  opacity: 1;
 }
