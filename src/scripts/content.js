@@ -28,7 +28,7 @@ const FLOPPY = '\ud83d\udcbe';
  */
 function extractSources(flashvars) {
 
-	// match `input` and `regexp` and replace all "\/" with just "/".
+	// match `input` and `regexp` and replace all `\/` with just `/`
 	function extractURL(input, regexp) {
 		let m = input.match(regexp);
 		return m ? m[1].replace(SLASH_REGEXP, '/') : null;
