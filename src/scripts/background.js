@@ -13,7 +13,7 @@ chrome.tabs.query({
 		// then send the 'update' message to have it scan the page
 		chrome.tabs.executeScript(tab.id, { // inject JS
 			file: 'scripts/content.js',
-			runAt: 'document_end'
+			runAt: 'document_idle'
 		}, function() {
 			chrome.tabs.sendMessage(tab.id, { // tell to update
 				msg: 'update'
