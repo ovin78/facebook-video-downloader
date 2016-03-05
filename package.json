@@ -2,7 +2,12 @@
   "name": "facebook-video-downloader",
   "version": "1.0.0",
   "description": "Chrome extension (and Opera add-on) which lets you download Facebook videos",
+  "author": "Deniz Dogan <deniz@dogan.se>",
+  "license": "MIT",
   "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.5.2",
@@ -18,9 +23,6 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/denizdogan/facebook-video-downloader.git"
@@ -34,8 +36,6 @@
     "opera",
     "addon"
   ],
-  "author": "Deniz Dogan <deniz@dogan.se>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/denizdogan/facebook-video-downloader/issues"
   },
