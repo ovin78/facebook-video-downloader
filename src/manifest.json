@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Facebook Video Downloader",
 	"short_name": "FbVidDwnldr",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Adds functionality for downloading Facebook videos in HD or SD resolution",
 	"author": "Deniz Dogan",
 	"icons": {
