@@ -39,5 +39,6 @@
   "bugs": {
     "url": "https://github.com/denizdogan/facebook-video-downloader/issues"
   },
-  "homepage": "https://github.com/denizdogan/facebook-video-downloader#readme"
+  "homepage": "https://github.com/denizdogan/facebook-video-downloader#readme",
+  "private": true
 }
