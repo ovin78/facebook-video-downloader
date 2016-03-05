@@ -57,12 +57,16 @@ function extractSources(flashvars) {
 function insertButtons(node, sources) {
 	if (!sources.hd && !sources.sd)
 		return;
+
+	// build html for download buttons
 	let html = '<p class="fbvd--wrapper">';
 	if (sources.hd)
 		html += `<a download target="_blank" href="${sources.hd}"><b>${FLOPPY}</b> HD</a>`;
 	if (sources.sd)
 		html += `<a download target="_blank" href="${sources.sd}"><b>${FLOPPY}</b> SD</a>`;
 	html += '</p>';
+
+	// insert the html behind the target node
 	node.insertAdjacentHTML('beforebegin', html);
 }
 
