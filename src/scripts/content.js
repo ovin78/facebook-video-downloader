@@ -116,8 +116,29 @@ observer.observe(document, {
 	subtree: true // listen to changes to descendants as well
 });
 
+/**
+ * Undo anything we have done to the document.
+ *
+ * This is used for rare cases where a Facebook tab is already open while the
+ * user updates the extension and the update is not compatible with the old
+ * version.
+ */
+function clearHandled() {
+	let nodeList = document.querySelectorAll(`embed[data-${HANDLED_ATTRIBUTE}="${HANDLED_VALUE}"]`);
+	Array.from(nodeList, node => {
+		delete node.dataset[HANDLED_ATTRIBUTE];
+	});
+
+	let wrappers = document.querySelectorAll('.fbvd--wrapper');
+	Array.from(wrappers, w =>
+		w.parentNode.removeChild(w)
+	);
+}
+
 // update whenever the background scripts asks for it
 chrome.runtime.onMessage.addListener((request, sender, response) => {
-	if (request.msg == 'update')
+	if (request.msg == 'update') {
+		clearHandled();
 		handleDescendantsOf(document);
+	}
 });
