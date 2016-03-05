@@ -124,11 +124,14 @@ observer.observe(document, {
  * version.
  */
 function clearHandled() {
+
+	// undo everything we marked as handled
 	let nodeList = document.querySelectorAll(`embed[data-${HANDLED_ATTRIBUTE}="${HANDLED_VALUE}"]`);
 	Array.from(nodeList, node => {
 		delete node.dataset[HANDLED_ATTRIBUTE];
 	});
 
+	// remove all download buttons
 	let wrappers = document.querySelectorAll('.fbvd--wrapper');
 	Array.from(wrappers, w =>
 		w.parentNode.removeChild(w)
