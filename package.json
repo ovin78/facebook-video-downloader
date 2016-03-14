@@ -7,7 +7,9 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "webpack -p"
+    "watch": "webpack -wv",
+    "chrome": "webpack -p",
+    "opera": "webpack -v"
   },
   "dependencies": {},
   "devDependencies": {
